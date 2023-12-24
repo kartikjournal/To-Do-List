@@ -90,6 +90,7 @@ width: 80px;
 ul li{
     list-style: none;
     color: #eee;
+    line-height: 30px;
 }
 .hide{
     display: none;
