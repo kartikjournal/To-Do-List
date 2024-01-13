@@ -1,97 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-*{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;  
-}
-body{
-    background-color: #222831;
-    color: #EEEEEE;
-}
-h1{
-    color: #00ADB5;
-    font-family: 'Silkscreen', sans-serif;
-}
-button{
-    font-family: 'Bebas Neue', sans-serif;
-}
-nav{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
-}
-a{
-    text-decoration: none;
-}
-nav .logo{
-    font-size: 30px;
-}
-nav .navbar{
-    margin-top: 20px;
-}
-nav .navbar a{
-    font-size: 20px;
-    text-decoration: none;
-    color: #EEEEEE;
-    padding: 20px 20px 20px;
-}
-.menu i{
-    font-size: 30px;
-    margin-top: 15px;
-    display: none;
-}
-@media (max-width:700px) {
-    .menu i{
-        display: block;
-    }
-    .navbar{
-        display: none;
-    }
-    .nav-hide{
-        display: block;
-        top: 30%;
-        position: absolute;
-        width: 10%;
-        line-height: 50px;
-        margin-right: 70px;
-    }
-}
-body{
-    background-color: #222831;
-}
-.box{
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-    margin-top: 10%;
-    flex-wrap: wrap;
-    line-height: 50px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
-.box h1{
-    font-family: 'Rubik', sans-serif;
-    color: #00ADB5;
-    font-size: 2rem;
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
 }
-.box input{
-height: 50px;
-text-align: center;
+
+#taskInput {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
 }
-.box button{
-height: 50px;
-width: 80px;   
+
+#addTaskBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
-ul li{
-    list-style: none;
-    color: #eee;
-    line-height: 30px;
+
+#addTaskBtn:hover {
+    background-color: #45a049;
 }
-.hide{
-    display: none;
+
+#taskList {
+    list-style-type: none;
+    padding: 0;
+    width: 300px;
+}
+
+.taskItem {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.deleteButton {
+    background-color: #ff6961;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.deleteButton:hover {
+    background-color: #ff5b51;
 }
