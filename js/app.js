@@ -1,43 +1,46 @@
-        // In-memory array to store tasks
-        var tasks = [];
+document.addEventListener("DOMContentLoaded", function () {
+    const notesContainer = document.getElementById("notes");
+    const noteInput = document.getElementById("noteInput");
+    const addNoteBtn = document.getElementById("addNoteBtn");
 
-        // Function to add a new task
-        function addTask() {
-            var taskInput = document.getElementById('taskInput');
-            var taskList = document.getElementById('taskList');
+    // Load notes from local storage
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
 
-            if (taskInput.value.trim() === '') {
-                alert('Please enter a task!');
-                return;
-            }
+    // Display existing notes
+    function displayNotes() {
+      notesContainer.innerHTML = "";
+      notes.forEach(function (note, index) {
+        const noteElement = document.createElement("div");
+        noteElement.className = "note";
+        noteElement.innerHTML = `
+          <span>${note}</span>
+          <button class="deleteBtn" onclick="deleteNote(${index})">Delete</button>
+        `;
+        notesContainer.appendChild(noteElement);
+      });
+    }
 
-            // Create a new task item
-            var taskItem = document.createElement('li');
-            taskItem.className = 'taskItem';
+    // Add a new note
+    function addNote() {
+      const newNote = noteInput.value.trim();
+      if (newNote !== "") {
+        notes.push(newNote);
+        localStorage.setItem("notes", JSON.stringify(notes));
+        noteInput.value = "";
+        displayNotes();
+      }
+    }
 
-            // Append task text to task item
-            taskItem.textContent = taskInput.value;
+    // Delete a note
+    window.deleteNote = function (index) {
+      notes.splice(index, 1);
+      localStorage.setItem("notes", JSON.stringify(notes));
+      displayNotes();
+    };
 
-            // Create a delete button
-            var deleteButton = document.createElement('button');
-            deleteButton.className = 'deleteButton';
-            deleteButton.textContent = 'Delete';
-            deleteButton.onclick = function() {
-                // Remove the task item when delete button is clicked
-                taskList.removeChild(taskItem);
-                // Remove the task from the in-memory array
-                tasks = tasks.filter(task => task !== taskInput.value);
-            };
+    // Event listeners
+    addNoteBtn.addEventListener("click", addNote);
 
-            // Append delete button to task item
-            taskItem.appendChild(deleteButton);
-
-            // Append the task item to the task list
-            taskList.appendChild(taskItem);
-
-            // Add the task to the in-memory array
-            tasks.push(taskInput.value);
-
-            // Clear the input field
-            taskInput.value = '';
-        }
+    // Initial display of notes
+    displayNotes();
+  });
